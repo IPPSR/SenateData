@@ -38,7 +38,7 @@ library(SenateData)
 #> Run `SenateData::get_senate_version()` to print the version of SenateData the package is using.
 ```
 
-``` 
+```r
 
 
 `get_var_info` returns the following information to simplify using
