@@ -38,7 +38,8 @@ library(SenateData)
 #> Run `SenateData::get_senate_version()` to print the version of SenateData the package is using.
 ```
 
-``` r
+``` 
+
 
 `get_var_info` returns the following information to simplify using
 SenateData:
@@ -51,6 +52,7 @@ SenateData:
 - category: the variable’s category (not all are coded)
 - plaintext_cite\[1-4\]: Plain text citation(s) for the data
 - bibtext_cite\[1-4\]: BibTeX citation(s) for the data
+
 
 ## Accessing SenateData
 
