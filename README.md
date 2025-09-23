@@ -1,6 +1,6 @@
 # SenateData: A Functional Tool for the SenateData Dataset
 
-SenateData is a package designed to allow a user with only basic knowledge of R interact with CongressData, a dataset with over 900 variables that compiles information about all US Senators and state-years across 1789-2024, and its codebook. The dataset tracks state characteristics, Senators, and the behavior of those Senators in policymaking. Users can find variables related to state- and member-level demographics, politics, and policy; subset the data across multiple dimensions; create custom aggregations of the dataset; and access citations in both plain text and BibTeX for every variable.
+SenateData is a package designed to allow a user with only basic knowledge of R interact with SenateData, a dataset with over 900 variables that compiles information about all US Senators and state-years across 1789-2024, and its codebook. The dataset tracks state characteristics, Senators, and the behavior of those Senators in policymaking. Users can find variables related to state- and member-level demographics, politics, and policy; subset the data across multiple dimensions; create custom aggregations of the dataset; and access citations in both plain text and BibTeX for every variable.
 
 ## Installing this Package
 
@@ -13,13 +13,13 @@ like so:
 # use the devtools library to download the package from GitHub
 library(devtools)
 
-# if there are issues or you only want to download CongressData
+# if there are issues or you only want to download SenateData
 install_github("ippsr/SenateData")
 ```
 
 ## Finding Variables
 
-`get_var_info`: Retrieve information regarding variables in CongressData
+`get_var_info`: Retrieve information regarding variables in SenateData
 and identify variables of interest with `get_var_info`. The function
 allows you to search to codebook to find the years each variable is
 observed in the data; a short and long description of each variable; and
@@ -40,32 +40,6 @@ library(SenateData)
 
 ``` r
 
-# variables related to health insurance
-h_ins_cong <- get_var_info(related_to = "health insurance")
-
-cat("There are",nrow(h_ins_cong),"variables related to health insurance in CongressData")
-#> There are 41 variables related to health insurance in CongressData
-```
-
-``` r
-
-head(h_ins_cong$variable)
-#> [1] "percent_under18_healthins" "percent_private_under18"  
-#> [3] "percent_public_under18"    "percent_privpub_under18"  
-#> [5] "percent_pop18_34"          "percent_private_18_34"
-```
-
-``` r
-
-# variables with 'under18' in their name
-under18_cong <- get_var_info(var_names = "under18")
-
-head(under18_cong$variable)
-#> [1] "percent_under18"           "percent_under18_healthins"
-#> [3] "percent_private_under18"   "percent_public_under18"   
-#> [5] "percent_privpub_under18"   "under18"
-```
-
 `get_var_info` returns the following information to simplify using
 SenateData:
 
@@ -78,7 +52,7 @@ SenateData:
 - plaintext_cite\[1-4\]: Plain text citation(s) for the data
 - bibtext_cite\[1-4\]: BibTeX citation(s) for the data
 
-## Accessing CongressData
+## Accessing SenateData
 
 `get_senate_data`: Access all or a part of SenateData with
 `get_senate_data`. Subset by state names with `state` and years with
@@ -92,10 +66,10 @@ searching ‘tax’ will return variables with words like ‘taxes’ and
 ``` r
 
 # load the entire dataset
-all_the_dat <- get_cong_data()
+all_the_dat <- get_senate_data()
 
 # subset by state, topic, and years
-cong_subset <- get_cong_data(states = c("Indiana","Kentucky","Michigan")
+sen_subset <- get_senate_data(states = c("Indiana","Kentucky","Michigan")
                              ,related_to = "tax"
                              ,years = c(1960,1980))
 ```
@@ -139,6 +113,6 @@ get_var_info(var_names = "popfemale") %>%
 ## Dataset and Package Citation
 
 In addition to citing each variable’s source, we ask that you cite
-CongressData if use this package or the dataset:
+SenateData if use this package or the dataset:
 
 > Yoel, Benjamin, and Iliya Liampert. 2025. SenateData Project. \textbf{V.1.0.} IPPSR. 
