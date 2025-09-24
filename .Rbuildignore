@@ -1,0 +1,12 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^cran-comments\.md$
+^\.travis\.yml$
+^doc$
+^Meta$
+^CRAN-RELEASE$
+^figures/*
+^LICENSE\.md$
+^senate_1.0_manual\.pdf$
+^CRAN-SUBMISSION$
