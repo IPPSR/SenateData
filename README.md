@@ -33,7 +33,7 @@ names with `var_names`.
 suppressMessages(library(dplyr))
 library(SenateData)
 #> Please cite:
-#> Yoel, Benjamin, and Iliya Liampert. 2025. SenateData Project. \textbf{V.1.0.} IPPSR. 
+#> Yoel, Benjamin, and Iliya Liampert. 2025. SenateData Project. V.1.0. IPPSR. 
 #> 
 #> Run `SenateData::get_senate_version()` to print the version of SenateData
 #> the package is using.
@@ -117,4 +117,4 @@ get_var_info(var_names = "popfemale") %>%
 In addition to citing each variable’s source, we ask that you cite
 SenateData if use this package or the dataset:
 
-> Yoel, Benjamin, and Iliya Liampert. 2025. SenateData Project. \textbf{V.1.0.} IPPSR. 
+> Yoel, Benjamin, and Iliya Liampert. 2025. SenateData Project. V.1.0. IPPSR. 
