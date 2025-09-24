@@ -35,7 +35,8 @@ library(SenateData)
 #> Please cite:
 #> Yoel, Benjamin, and Iliya Liampert. 2025. SenateData Project. \textbf{V.1.0.} IPPSR. 
 #> 
-#> Run `SenateData::get_senate_version()` to print the version of SenateData the package is using.
+#> Run `SenateData::get_senate_version()` to print the version of SenateData
+#> the package is using.
 ```
 
 
