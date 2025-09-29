@@ -1,7 +1,7 @@
 Package: SenateData
 Type: Package
 Title: A Functional Tool for 'CongressData'
-Version: 1.6.0
+Version: 1.0.0
 Authors@R: c(
     person("Ben", "Yoel", email = "benjaminyoel@gmail.com", role = c("aut", "cre")),
     person("Iliya", "Liampert", role = "ctb")
