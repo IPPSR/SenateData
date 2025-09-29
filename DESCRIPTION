@@ -1,12 +1,12 @@
 Package: SenateData
 Type: Package
-Title: A Functional Tool for 'CongressData'
+Title: A Functional Tool for 'SenateData'
 Version: 1.0.0
 Authors@R: c(
     person("Ben", "Yoel", email = "benjaminyoel@gmail.com", role = c("aut", "cre")),
     person("Iliya", "Liampert", role = "ctb")
   )
-Description: A tool that imports, subsets, and exports the 'SenateData' dataset. 'SenateData' contains approximately 900 variables concerning all US Senators and states with data back to 1789. The dataset tracks district characteristics, Senators, and the political behavior of those Senators. Users with only a basic understanding of R can subset this data across multiple dimensions, export their search results, identify the citations associated with their searches, and more.
+Description: A tool that imports, subsets, and exports the 'SenateData' dataset. 'SenateData' contains approximately 950 variables concerning all U.S. senators and states with data back to 1789. The dataset tracks district characteristics, Senators, and the political behavior of those Senators. Users with only a basic understanding of R can subset this data across multiple dimensions, export their search results, identify the citations associated with their searches, and more.
 License: GPL-3
 Encoding: UTF-8
 Language: en-US
