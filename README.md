@@ -117,4 +117,11 @@ get_var_info(var_names = "popfemale") %>%
 In addition to citing each variable’s source, we ask that you cite
 SenateData if use this package or the dataset:
 
-> Yoel, Benjamin, and Iliya Liampert. 2025. SenateData Project. V.1.0. IPPSR. 
+> Yoel, Benjamin, and Iliya Liampert. 2025. SenateData Project. V.1.0. IPPSR.
+
+# Contact
+
+[**Benjamin Yoel**](https://benjaminyoel.com/) - PhD Candidate, Michigan
+State University, and Predoctoral Fellow, Johns Hopkins University ([Twitter]([https://twitter.com/caleblucas](https://x.com/benyoel_))) <br />
+[**Iliya Liampert**](https://liampert.github.io/)) - PhD Student,
+Michigan State University
