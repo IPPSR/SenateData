@@ -122,6 +122,6 @@ SenateData if use this package or the dataset:
 # Contact
 
 [**Benjamin Yoel**](https://benjaminyoel.com/) - PhD Candidate, Michigan
-State University, and Predoctoral Fellow, Johns Hopkins University ([Twitter]([https://twitter.com/caleblucas](https://x.com/benyoel_))) <br />
+State University, and Predoctoral Fellow, Johns Hopkins University
 [**Iliya Liampert**](https://liampert.github.io/) - PhD Student,
 Michigan State University
