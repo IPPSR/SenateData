@@ -20,4 +20,4 @@
 #' column names and structures may vary depending on updates.
 #'
 #' @source Institute for Public Policy and Social Research (IPPSR)
-"SenateData"
+"senate"
