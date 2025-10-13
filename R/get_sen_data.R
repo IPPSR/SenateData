@@ -61,8 +61,3 @@ get_senate_data <- function(states = NULL, related_to = "", years = NULL) {
 
   return(df)
 }
-
-devtools::document()
-devtools::load_all()
-?get_senate_data
-
