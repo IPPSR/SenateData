@@ -1,3 +1,3 @@
 utils::globalVariables(c("state","year","congress",".","variable","pull","vars","congress_number"),
-                       package = “SenateData”,
+                       package = "SenateData",
                        add = F)

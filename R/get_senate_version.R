@@ -18,7 +18,7 @@ get_senate_version <- function() {
   )
   
   if (is.na(vers)) {
-    message(“SenateData version: not available")
+    message("SenateData version: not available")
   } else {
     message("You are using SenateData version: ", vers$version)
   }
