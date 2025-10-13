@@ -19,19 +19,19 @@
 #' get_senate_data(states = "Michigan", years = c(2000, 2008))
 #' get_senate_data(related_to = "tax")
 get_senate_data <- function(states = NULL, related_to = "", years = NULL) {
-
+  
   # --- Ensure dataset is available ---
   if (!exists("SenateData", envir = asNamespace("SenateData"))) {
     data("SenateData", package = "SenateData", envir = environment())
   }
-
+  
   df <- get("SenateData", envir = asNamespace("SenateData"))
-
+  
   # --- Filter by state ---
   if (!is.null(states)) {
     df <- df[df$state %in% states, ]
   }
-
+  
   # --- Filter by related_to keyword ---
   if (nzchar(related_to)) {
     cols_to_search <- c("variable_name", "short_description", "long_description", "citation")
@@ -42,7 +42,7 @@ get_senate_data <- function(states = NULL, related_to = "", years = NULL) {
       df <- df[keep, ]
     }
   }
-
+  
   # --- Filter by years ---
   if (!is.null(years)) {
     if (length(years) == 1) {
@@ -53,11 +53,11 @@ get_senate_data <- function(states = NULL, related_to = "", years = NULL) {
       warning("`years` must be NULL, a single year, or a two-element numeric vector.")
     }
   }
-
+  
   # --- Return as tibble ---
   if (requireNamespace("tibble", quietly = TRUE)) {
     df <- tibble::as_tibble(df)
   }
-
+  
   return(df)
 }
