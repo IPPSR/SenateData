@@ -15,9 +15,3 @@ RoxygenNote: 7.3.3
 Depends: 
     R (>= 3.50)
 Imports:
-    stringr,
-    dplyr,
-    rlang,
-    fst,
-    curl,
-    tidyselect
