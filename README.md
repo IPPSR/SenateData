@@ -76,15 +76,6 @@ sen_subset <- get_senate_data(states = c("Indiana","Kentucky","Michigan")
                              ,years = c(1960,1980))
 ```
 
-Run `get_senate_version` to see what version of the dataset is
-available in `SenateData`.
-
-``` r
-
-SenateData::get_senate_version()
-#> You are using SenateData version: 1
-```
-
 ## Pulling Citations
 
 `get_var_info`: Each variable in SenateData was collected from
