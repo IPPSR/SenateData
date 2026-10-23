@@ -22,12 +22,12 @@ install_github("ippsr/SenateData")
 In addition to citing each variable’s source, we ask that you cite
 SenateData if you use this package or the dataset:
 
-> Yoel, Benjamin, and Iliya Liampert. 2026. SenateData Project. V.1.2. IPPSR.
+> Yoel, Benjamin, Iliya Liampert, and Matt Grossmann. Forthcoming. ``Determinants of Legislative Effectiveness: Exploring Senators, Their States, and Their Behavior with SenateData." Research \& Politics.
 
 # Contact
 
-[**Benjamin Yoel**](https://benjaminyoel.com/) - PhD Candidate, Michigan
-State University, and Predoctoral Fellow, Johns Hopkins University
+[**Benjamin Yoel**](https://benjaminyoel.com/) - Jan Koum Postdoctoral Fellow, 
+Stanford University’s Center on Democracy.
 
-[**Iliya Liampert**](https://liampert.github.io/) - PhD Student,
+[**Iliya Liampert**](https://iliyaliampert.com/) - PhD Candidate,
 Michigan State University
