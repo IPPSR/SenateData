@@ -3,32 +3,40 @@
 \docType{data}
 \name{senate}
 \alias{senate}
-\title{Senate Data}
+\title{SenateData}
 \format{
-A list of data frames:
+A tibble with 17,842 rows and 1,133 columns. Each row is a
+senator-year, identified by:
 \describe{
-\item{members}{Information on Senate members. Columns may include:
-\code{member_id}, \code{name}, \code{party}, \code{state}, \code{chamber}, \code{start_date}, \code{end_date}}
-\item{bills}{Legislative bill information. Columns may include:
-\code{bill_id}, \code{title}, \code{introduced_date}, \code{sponsor}, \code{status}, \code{subjects}}
-\item{states}{State-level data associated with Senate representation.
-Columns may include: \code{state}, \code{population}, \code{region}, \code{median_income}, \code{partisan_lean}}
-\item{other}{Other Senate-related variables depending on the dataset contents.}
+\item{firstname, lastname}{Senator's first and last name.}
+\item{st}{Two-letter postal abbreviation of the senator's state.}
+\item{year}{Calendar year.}
+\item{congress_number}{Number of the Congress in session that year.}
+\item{bioguide}{Congressional Biographical Directory ID (complete).}
+\item{icpsr}{ICPSR/Voteview member ID.}
+\item{govtrack, wikipedia, wikidata, google_entity_id, house_history}{Other
+member identifiers.}
+\item{start, end}{Start and end dates (class \code{Date}) of the senator's
+current term.}
 }
+The remaining columns are member- and state-level variables. Use
+\code{\link[=get_var_info]{get_var_info()}} to see what each variable measures and \code{\link[=get_cites]{get_cites()}} to
+cite its source.
 }
 \source{
-Institute for Public Policy and Social Research (IPPSR)
+Institute for Public Policy and Social Research (IPPSR), Michigan
+State University. Variable-level sources are listed in \link{codebook}.
 }
 \usage{
 senate
 }
 \description{
-A dataset containing information related to the United States Senate,
-including members, bills, and state-level variables.
+The SenateData panel: one row per senator-year, covering every U.S. senator
+from 1789 to 2025, with over 1,100 variables on senators, their states, and
+their behavior in office.
 }
 \details{
-The dataset integrates multiple aspects of Senate data, including member
-metadata, legislative information, and state-level attributes. Exact
-column names and structures may vary depending on updates.
+Load it with \code{\link[=get_senate_data]{get_senate_data()}}, which can subset by state, year, and
+topic, or use \code{SenateData::senate} directly.
 }
 \keyword{datasets}

@@ -4,30 +4,44 @@
 \alias{get_senate_data}
 \title{Load SenateData into the R environment}
 \usage{
-get_senate_data(states = NULL, related_to = "", years = NULL)
+get_senate_data(states = NULL, related_to = NULL, years = NULL)
 }
 \arguments{
-\item{states}{Default is NULL. If left blank, returns all states. Takes a
-string or vector of strings of state names.}
+\item{states}{Default is \code{NULL}, which returns all states. A character vector
+of state names (e.g. \code{"Michigan"}) or two-letter postal abbreviations
+(e.g. \code{"MI"}), in any letter case.}
 
-\item{related_to}{Default is "". Provide a string to search a variable's name,
-short/long descriptions from the codebook, and its citation for non-exact matches
-of a search term.}
+\item{related_to}{Default is \code{NULL}, which returns all variables. A character
+vector of search terms. Keeps every variable whose name, short or long
+description, source, or category in the codebook contains any of the terms
+(plain-text match, not case sensitive), plus the identifier columns
+(names, \code{st}, \code{bioguide}, \code{icpsr}, \code{year}, \code{congress_number}, and so on).
+For example, \code{"tax"} matches variables described with "taxes" or "taxable".}
 
-\item{years}{Default is NULL. If left blank, returns all years. Input can be
-a single year (e.g. 2001) or a two-year vector representing the first and last
-years desired (e.g. \code{c(1989, 2001)}).}
+\item{years}{Default is \code{NULL}, which returns all years. A single year
+(e.g. \code{2001}) or a two-element vector giving the first and last years
+(e.g. \code{c(1989, 2001)}).}
 }
 \value{
-A tibble containing SenateData. The tibble has columns corresponding
-to variables in the dataset, and rows corresponding to observations that match
-the filtering criteria specified by \code{states}, \code{related_to}, and \code{years}.
+A tibble with one row per senator-year that matches \code{states} and
+\code{years}, and the columns selected by \code{related_to}.
 }
 \description{
-Load SenateData into the R environment
+\code{get_senate_data()} returns the SenateData panel (one row per senator-year),
+either in full or subset by state, year, and topic.
 }
 \examples{
-get_senate_data()
-get_senate_data(states = "Michigan", years = c(2000, 2008))
-get_senate_data(related_to = "tax")
+# the full dataset
+senate_all <- get_senate_data()
+
+# Michigan's senators, 2000-2008
+mi <- get_senate_data(states = "Michigan", years = c(2000, 2008))
+
+# environment-related variables in 2010, and their citations
+env <- get_senate_data(related_to = "environment", years = 2010)
+get_cites(env)
+}
+\seealso{
+\code{\link[=get_var_info]{get_var_info()}} to look up variables in the codebook, and
+\code{\link[=get_cites]{get_cites()}} to get the citations for the variables you use.
 }

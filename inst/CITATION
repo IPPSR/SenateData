@@ -1,0 +1,15 @@
+citHeader("To cite SenateData in publications, please use the citation below.",
+          "Please also cite the source of each variable you use;",
+          "get_cites() returns these citations.")
+
+bibentry(
+  bibtype      = "Misc",
+  key          = "yoel_liampert_senatedata",
+  title        = "{SenateData} Project",
+  author       = c(person("Benjamin", "Yoel"), person("Iliya", "Liampert")),
+  year         = "2026",
+  note         = "Version 1.2",
+  publisher    = "Institute for Public Policy and Social Research (IPPSR), Michigan State University",
+  url          = "https://github.com/IPPSR/SenateData",
+  textVersion  = "Yoel, Benjamin, and Iliya Liampert. 2026. SenateData Project. V.1.2. IPPSR."
+)

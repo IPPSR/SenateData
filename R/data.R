@@ -1,23 +1,54 @@
-#' Senate Data
+#' SenateData
 #'
-#' A dataset containing information related to the United States Senate,
-#' including members, bills, and state-level variables.
+#' The SenateData panel: one row per senator-year, covering every U.S. senator
+#' from 1789 to 2025, with over 1,100 variables on senators, their states, and
+#' their behavior in office.
 #'
-#' @format A list of data frames:
+#' Load it with [get_senate_data()], which can subset by state, year, and
+#' topic, or use `SenateData::senate` directly.
+#'
+#' @format A tibble with 17,842 rows and 1,133 columns. Each row is a
+#'   senator-year, identified by:
 #' \describe{
-#'   \item{members}{Information on Senate members. Columns may include:
-#'     \code{member_id}, \code{name}, \code{party}, \code{state}, \code{chamber}, \code{start_date}, \code{end_date}}
-#'   \item{bills}{Legislative bill information. Columns may include:
-#'     \code{bill_id}, \code{title}, \code{introduced_date}, \code{sponsor}, \code{status}, \code{subjects}}
-#'   \item{states}{State-level data associated with Senate representation.
-#'     Columns may include: \code{state}, \code{population}, \code{region}, \code{median_income}, \code{partisan_lean}}
-#'   \item{other}{Other Senate-related variables depending on the dataset contents.}
+#'   \item{firstname, lastname}{Senator's first and last name.}
+#'   \item{st}{Two-letter postal abbreviation of the senator's state.}
+#'   \item{year}{Calendar year.}
+#'   \item{congress_number}{Number of the Congress in session that year.}
+#'   \item{bioguide}{Congressional Biographical Directory ID (complete).}
+#'   \item{icpsr}{ICPSR/Voteview member ID.}
+#'   \item{govtrack, wikipedia, wikidata, google_entity_id, house_history}{Other
+#'     member identifiers.}
+#'   \item{start, end}{Start and end dates (class `Date`) of the senator's
+#'     current term.}
+#' }
+#' The remaining columns are member- and state-level variables. Use
+#' [get_var_info()] to see what each variable measures and [get_cites()] to
+#' cite its source.
+#'
+#' @source Institute for Public Policy and Social Research (IPPSR), Michigan
+#'   State University. Variable-level sources are listed in [codebook].
+"senate"
+
+#' SenateData codebook
+#'
+#' Documentation and citations for every variable in [senate]. This is the
+#' table that [get_var_info()] searches and [get_cites()] draws citations
+#' from.
+#'
+#' @format A tibble with one row per variable and 16 columns:
+#' \describe{
+#'   \item{variable}{Variable name, as it appears in [senate].}
+#'   \item{years}{Years in which the variable is observed.}
+#'   \item{short_desc}{Short description.}
+#'   \item{long_desc}{Long description.}
+#'   \item{sources}{Source of the data.}
+#'   \item{category}{Topic category.}
+#'   \item{plaintext_cite, bibtex_cite}{Main citation, in plain text and BibTeX.}
+#'   \item{plaintext_cite2, bibtex_cite2, plaintext_cite3, bibtex_cite3,
+#'     plaintext_cite4, bibtex_cite4, plaintext_cite5, bibtex_cite5}{Additional
+#'     citations, where a variable has more than one.}
 #' }
 #'
-#' @details
-#' The dataset integrates multiple aspects of Senate data, including member
-#' metadata, legislative information, and state-level attributes. Exact
-#' column names and structures may vary depending on updates.
-#'
-#' @source Institute for Public Policy and Social Research (IPPSR)
-"senate"
+#' @source Institute for Public Policy and Social Research (IPPSR), Michigan
+#'   State University.
+"codebook"

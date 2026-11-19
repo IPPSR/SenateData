@@ -1,63 +1,75 @@
 #' Load SenateData into the R environment
 #'
-#' @param states Default is NULL. If left blank, returns all states. Takes a
-#' string or vector of strings of state names.
-#' @param related_to Default is "". Provide a string to search a variable's name,
-#' short/long descriptions from the codebook, and its citation for non-exact matches
-#' of a search term.
-#' @param years Default is NULL. If left blank, returns all years. Input can be
-#' a single year (e.g. 2001) or a two-year vector representing the first and last
-#' years desired (e.g. \code{c(1989, 2001)}).
+#' `get_senate_data()` returns the SenateData panel (one row per senator-year),
+#' either in full or subset by state, year, and topic.
 #'
-#' @return A tibble containing SenateData. The tibble has columns corresponding
-#' to variables in the dataset, and rows corresponding to observations that match
-#' the filtering criteria specified by \code{states}, \code{related_to}, and \code{years}.
+#' @param states Default is `NULL`, which returns all states. A character vector
+#'   of state names (e.g. `"Michigan"`) or two-letter postal abbreviations
+#'   (e.g. `"MI"`), in any letter case.
+#' @param related_to Default is `NULL`, which returns all variables. A character
+#'   vector of search terms. Keeps every variable whose name, short or long
+#'   description, source, or category in the codebook contains any of the terms
+#'   (plain-text match, not case sensitive), plus the identifier columns
+#'   (names, `st`, `bioguide`, `icpsr`, `year`, `congress_number`, and so on).
+#'   For example, `"tax"` matches variables described with "taxes" or "taxable".
+#' @param years Default is `NULL`, which returns all years. A single year
+#'   (e.g. `2001`) or a two-element vector giving the first and last years
+#'   (e.g. `c(1989, 2001)`).
+#'
+#' @return A tibble with one row per senator-year that matches `states` and
+#'   `years`, and the columns selected by `related_to`.
+#'
+#' @seealso [get_var_info()] to look up variables in the codebook, and
+#'   [get_cites()] to get the citations for the variables you use.
+#'
 #' @export
 #'
 #' @examples
-#' get_senate_data()
-#' get_senate_data(states = "Michigan", years = c(2000, 2008))
-#' get_senate_data(related_to = "tax")
-get_senate_data <- function(states = NULL, related_to = "", years = NULL) {
-  
-  # --- Ensure dataset is available ---
-  if (!exists("SenateData", envir = asNamespace("SenateData"))) {
-    data("SenateData", package = "SenateData", envir = environment())
-  }
-  
-  df <- get("SenateData", envir = asNamespace("SenateData"))
-  
+#' # the full dataset
+#' senate_all <- get_senate_data()
+#'
+#' # Michigan's senators, 2000-2008
+#' mi <- get_senate_data(states = "Michigan", years = c(2000, 2008))
+#'
+#' # environment-related variables in 2010, and their citations
+#' env <- get_senate_data(related_to = "environment", years = 2010)
+#' get_cites(env)
+get_senate_data <- function(states = NULL, related_to = NULL, years = NULL) {
+
+  df <- .sd_get("senate")
+
   # --- Filter by state ---
   if (!is.null(states)) {
-    df <- df[df$state %in% states, ]
-  }
-  
-  # --- Filter by related_to keyword ---
-  if (nzchar(related_to)) {
-    cols_to_search <- c("variable_name", "short_description", "long_description", "citation")
-    found_cols <- intersect(cols_to_search, names(df))
-    if (length(found_cols) > 0) {
-      pattern <- tolower(related_to)
-      keep <- apply(df[found_cols], 1, function(x) any(grepl(pattern, tolower(x))))
-      df <- df[keep, ]
+    if (!is.character(states)) {
+      stop("`states` must be a character vector of state names or abbreviations.",
+           call. = FALSE)
     }
+    df <- df[df$st %in% .state_abb(states), , drop = FALSE]
   }
-  
+
   # --- Filter by years ---
   if (!is.null(years)) {
-    if (length(years) == 1) {
-      df <- df[df$year == years, ]
-    } else if (length(years) == 2) {
-      df <- df[df$year >= years[1] & df$year <= years[2], ]
-    } else {
-      warning("`years` must be NULL, a single year, or a two-element numeric vector.")
+    if (!is.numeric(years) || !length(years) %in% 1:2 || anyNA(years)) {
+      stop("`years` must be NULL, a single year, or a two-element numeric vector.",
+           call. = FALSE)
     }
+    yr <- range(years)
+    df <- df[!is.na(df$year) & df$year >= yr[1] & df$year <= yr[2], , drop = FALSE]
   }
-  
-  # --- Return as tibble ---
-  if (requireNamespace("tibble", quietly = TRUE)) {
-    df <- tibble::as_tibble(df)
+
+  # --- Select variables by related_to keyword(s) ---
+  if (!is.null(related_to) && any(nzchar(related_to))) {
+    hits <- .search_codebook(related_to)$variable
+    if (length(hits) == 0) {
+      warning("No variables match `related_to`; returning identifier columns only.",
+              call. = FALSE)
+    }
+    df <- df[, names(df) %in% c(.id_vars, hits), drop = FALSE]
   }
-  
-  return(df)
+
+  if (nrow(df) == 0) {
+    warning("No rows match the requested states and years.", call. = FALSE)
+  }
+
+  tibble::as_tibble(df)
 }

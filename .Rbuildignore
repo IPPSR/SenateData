@@ -10,3 +10,4 @@
 ^LICENSE\.md$
 ^senate_1.0_manual\.pdf$
 ^CRAN-SUBMISSION$
+^data-raw$
